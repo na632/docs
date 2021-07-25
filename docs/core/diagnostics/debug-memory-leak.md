@@ -3,6 +3,7 @@ title: Debug a memory leak tutorial
 description: Learn how to debug a memory leak in .NET Core.
 ms.topic: tutorial
 ms.date: 04/20/2020
+recommendations: false
 ---
 
 # Debug a memory leak in .NET Core
@@ -233,7 +234,7 @@ You can also delete the dump file that was created.
 - [dotnet-trace](dotnet-trace.md) to list processes
 - [dotnet-counters](dotnet-counters.md) to check managed memory usage
 - [dotnet-dump](dotnet-dump.md) to collect and analyze a dump file
-- [dotnet/diagnostics](https://github.com/dotnet/diagnostics/tree/master/documentation/tutorial)
+- [dotnet/diagnostics](https://github.com/dotnet/diagnostics/tree/main/documentation/tutorial)
 - [Use Visual Studio to debug memory leaks](/visualstudio/profiling/memory-usage)
 
 ## Next steps

@@ -1,7 +1,7 @@
 ---
 title: "Breaking change: CA1416: Platform compatibility"
 description: Learn about the breaking change in .NET 5 caused by the enablement of code analysis rule CA1416.
-ms.date: 09/29/2020
+ms.date: 05/04/2021
 ---
 # Warning CA1416: Platform compatibility
 
@@ -88,7 +88,7 @@ public void PlayCMajor()
 
 If you don't want to fix all your call sites, you can choose one of the following options to suppress the warning:
 
-- To suppress rule CA1416, you can do so using `#pragma` or the [-nowarn](../../../../csharp/language-reference/compiler-options/nowarn-compiler-option.md) compiler flag, or by [setting the rule's severity](../../../../fundamentals/code-analysis/configuration-options.md#severity-level) to `none` in an .editorconfig file.
+- To suppress rule CA1416, you can do so using `#pragma` or the [**DisabledWarnings**](../../../../csharp/language-reference/compiler-options/errors-warnings.md#disabledwarnings) compiler flag, or by [setting the rule's severity](../../../../fundamentals/code-analysis/configuration-options.md#severity-level) to `none` in an .editorconfig file.
 
   ```csharp
   public void PlayCMajor()
@@ -105,7 +105,7 @@ If you don't want to fix all your call sites, you can choose one of the followin
 
 For Windows platform:
 
-- All APIs listed at <https://github.com/dotnet/designs/blob/master/accepted/2020/windows-specific-apis/windows-specific-apis.md>.
+- All APIs listed at <https://github.com/dotnet/designs/blob/main/accepted/2020/windows-specific-apis/windows-specific-apis.md>.
 - <xref:System.Security.Cryptography.DSAOpenSsl?displayProperty=fullName>
 - <xref:System.Security.Cryptography.ECDiffieHellmanOpenSsl?displayProperty=fullName>
 - <xref:System.Security.Cryptography.ECDsaOpenSsl?displayProperty=fullName>
@@ -131,4 +131,4 @@ For Blazor WebAssembly platform:
 ## See also
 
 - [CA1416: Validate platform compatibility](/visualstudio/code-quality/ca1416)
-- [.NET API analyzer](../../../../standard/analyzers/api-analyzer.md)
+- [Platform compatibility analyzer](../../../../standard/analyzers/platform-compat-analyzer.md)

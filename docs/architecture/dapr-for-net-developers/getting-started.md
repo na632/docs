@@ -1,7 +1,7 @@
 ---
 title: Get started with Dapr
 description: A guide for preparing your local development environment and building your first .NET applications with Dapr.
-author: amolenk
+author: amolenk 
 ms.date: 02/25/2021
 ---
 
@@ -250,7 +250,7 @@ Now, you'll configure communication between the services using Dapr [service inv
     }
     ```
 
-    The call to `AddDapr` registers the `DaprClient` class with the ASP.NET Core dependency injection system. You'll use the `DaprClient` class later on to communicate with the Dapr sidecar.
+    The call to `AddDapr` registers the `DaprClient` class with the ASP.NET Core dependency injection system. With the client registered, you can now inject an instance of `DaprClient` into your service code to communicate with the Dapr sidecar, building blocks, and components.
 
 1. Add a new C# class file named *WeatherForecast* to the `DaprFrontEnd` project:
 
@@ -416,6 +416,7 @@ In the final part of this example, you'll add container support and run the solu
     FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
     WORKDIR /app
     EXPOSE 80
+    EXPOSE 443
 
     FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
     WORKDIR /src
@@ -457,7 +458,7 @@ In the final part of this example, you'll add container support and run the solu
 
     ```yaml
     version: '3.4'
-    
+
     services:
       daprfrontend:
         image: ${DOCKER_REGISTRY-}daprfrontend
@@ -469,7 +470,7 @@ In the final part of this example, you'll add container support and run the solu
 
       daprfrontend-dapr:
         image: "daprio/daprd:latest"
-        command: [ "./daprd", "-app-id", "daprfrontend", "-app-port", "80" ]
+        command: [ "./daprd", "-app-id", "daprfrontend", "-app-port", "443", "-app-ssl" ]
         depends_on:
           - daprfrontend
         network_mode: "service:daprfrontend"
@@ -484,9 +485,9 @@ In the final part of this example, you'll add container support and run the solu
 
       daprbackend-dapr:
         image: "daprio/daprd:latest"
-        command: [ "./daprd", "-app-id", "daprbackend", "-app-port", "80" ]
+        command: [ "./daprd", "-app-id", "daprbackend", "-app-port", "443", "-app-ssl" ]
         depends_on:
-          - daprfrontend
+          - daprbackend
         network_mode: "service:daprbackend"
     ```
 
